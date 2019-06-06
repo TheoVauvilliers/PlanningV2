@@ -5,11 +5,11 @@ Prog
 ----
 
 - Faire la ***demande de réservation*** --- FAIT
-- Afficher le ***planning par lieu***
-- Afficher le ***planning par type de salle***
-- ***Modifier les réservations***
-- ***Droit*** des Gestionnaires
-- ***Supprimer, accepter ou modifier*** reservation par rapport au droit
+- Afficher le ***planning par lieu*** --- FAIT
+- Afficher le ***planning par type de salle*** --- FAIT
+- ***Modifier les réservations*** --- FAIT
+- ***Droit*** des Gestionnaires --- FAIT
+- ***Supprimer, accepter ou modifier*** reservation par rapport au droit --- FAIT
 - ***Mail automatique*** aux gestionnaires
 
 Autres
