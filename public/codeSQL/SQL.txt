@@ -1,0 +1,86 @@
+INSERT INTO `client` (`id`, `titre`, `nom`, `prenom`, `ad1`, `ad2`, `ad3`, `cpostal`, `commune`, `tel`, `comment`, `portable`, `fax`, `mail`)
+VALUES (NULL, '\"AUBE VEGE\" L\'ASSOCIATION VEGETARIENNE DE TROYES', 'Dupond', 'Jean', '10 rue Emile Zola', NULL, NULL, '10000', 'Troyes', NULL, NULL, '0611223344', NULL, 'asso.vege@gmail.com');
+INSERT INTO `client` (`id`, `titre`, `nom`, `prenom`, `ad1`, `ad2`, `ad3`, `cpostal`, `commune`, `tel`, `comment`, `portable`, `fax`, `mail`)
+VALUES (NULL, '3 FIGHT SAMBO', 'McGregor', 'Conor', '34 rue Imaginaire', NULL, NULL, '10000', 'Troyes', NULL, NULL, '0606060606', NULL, 'fight.sambo@contact.fr');
+INSERT INTO `client` (`id`, `titre`, `nom`, `prenom`, `ad1`, `ad2`, `ad3`, `cpostal`, `commune`, `tel`, `comment`, `portable`, `fax`, `mail`)
+VALUES (NULL, 'CROIX ROUGE FRANCAISE - POLE SOCIAL DE L\'AUBE', 'Leslie', 'Marie', '3 rue Champo', NULL, NULL, '10000', 'Troyes', NULL, NULL, '0777885511', NULL, 'croix.rouge10@asso.com');
+INSERT INTO `client` (`id`, `titre`, `nom`, `prenom`, `ad1`, `ad2`, `ad3`, `cpostal`, `commune`, `tel`, `comment`, `portable`, `fax`, `mail`)
+VALUES (NULL, 'ECOLE ELEMENTAIRE DE CLEREY', 'Dupond', 'Francois', '74 rue princiaple', NULL, NULL, '10390', 'Clerey', NULL, NULL, '0697643182', NULL, 'ecole.elem@clerey.fr');
+INSERT INTO `client` (`id`, `titre`, `nom`, `prenom`, `ad1`, `ad2`, `ad3`, `cpostal`, `commune`, `tel`, `comment`, `portable`, `fax`, `mail`)
+VALUES (NULL, 'TROYES AUBE CYCLISME', 'Roïd', 'Paula', '57 boulevard du 14 Juillet', NULL, NULL, '10000', 'Troyes', NULL, NULL, '0655445544', NULL, 'cycl.asso10@gmail.com');
+
+INSERT INTO `jourferie`(`id`, `jour`, `mois`, `libjour`) VALUES ('1','11','1','1er Janvier');
+INSERT INTO `jourferie`(`id`, `jour`, `mois`, `libjour`) VALUES ('2','11','11','11 Novembre');
+INSERT INTO `jourferie`(`id`, `jour`, `mois`, `libjour`) VALUES ('3','14','7','Fête nationnale');
+INSERT INTO `jourferie`(`id`, `jour`, `mois`, `libjour`) VALUES ('4','1','5','Fête du travail');
+INSERT INTO `jourferie`(`id`, `jour`, `mois`, `libjour`) VALUES ('5','8','5','8 mai 2011');
+
+INSERT INTO `lieu` (`id`, `libelle`) VALUES (NULL, 'Troyes');
+INSERT INTO `lieu` (`id`, `libelle`) VALUES (NULL, 'Saint Julien');
+INSERT INTO `lieu` (`id`, `libelle`) VALUES (NULL, 'Sainte Savine');
+
+INSERT INTO `role`(`id`, `libelle`) VALUES (2, 'ROLE_GESTIONNAIRE');
+INSERT INTO `role`(`id`, `libelle`) VALUES (1, 'ROLE_PLANNING');
+
+INSERT INTO `type_de_salle` (`id`, `libelle`) VALUES (NULL, 'Salle des fêtes');
+INSERT INTO `type_de_salle` (`id`, `libelle`) VALUES (NULL, 'Salle de réunion');
+INSERT INTO `type_de_salle` (`id`, `libelle`) VALUES (NULL, 'Gymnase');
+
+INSERT INTO `salle` (`id`, `lieu_id`, `type_de_salle_id`, `libelle`) VALUES (NULL, '2', '1', 'Salle Polyvalente - Grande salle');
+INSERT INTO `salle` (`id`, `lieu_id`, `type_de_salle_id`, `libelle`) VALUES (NULL, '2', '1', 'Espace Grimont - petite salle');
+INSERT INTO `salle` (`id`, `lieu_id`, `type_de_salle_id`, `libelle`) VALUES (NULL, '2', '3', 'Gymnase Fernand Ganne - Salle principale');
+INSERT INTO `salle` (`id`, `lieu_id`, `type_de_salle_id`, `libelle`) VALUES (NULL, '1', '1', 'Salons de l\'Hôtel de Ville - Salle des fêtes');
+INSERT INTO `salle` (`id`, `lieu_id`, `type_de_salle_id`, `libelle`) VALUES (NULL, '1', '2', 'Petit Louvre - Salle de réunion');
+INSERT INTO `salle` (`id`, `lieu_id`, `type_de_salle_id`, `libelle`) VALUES (NULL, '1', '3', 'Cosec des Terrasses - tennis de table');
+INSERT INTO `salle` (`id`, `lieu_id`, `type_de_salle_id`, `libelle`) VALUES (NULL, '3', '3', 'Cosec de la Noue Lutel - Gymnase principal');
+
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('41', 'ACTIV', 'Activités', '0', '26367', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('36', 'AGCOCK', 'AG cocktail', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('35', 'AGCONC', 'AG concert', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('15', 'ASSEMBLE', 'Assemblée', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('42', 'ASSGALE', 'Assemblée Générale', '0', '26367', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('39', 'CA', 'Conseil d''administration', '0', '13421823', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('1', 'CEREM', 'Cérémonie', '0', '3514624', '65536');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('33', 'COCKTAIL', 'Cocktail', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('21', 'CONCERT', 'Concert', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('22', 'CONCOURS', 'Concours', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('34', 'CONF', 'Conférence', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('5', 'CONFPRES', 'Conférence de presse', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('6', 'CONSMUN', 'Conseil Municipal', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('25', 'DEFILE', 'Défilé', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('18', 'ELECTION', 'Elections', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('13', 'EMISSION', 'Emission radio - TV', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('19', 'EXPOSITI', 'Exposition', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('24', 'FESTIVAL', 'Festival', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('37', 'FORM', 'Formation', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('14', 'INDISP', 'Indisponible', '0', '3355647', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('43', 'JURY', 'Jury', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('7', 'MAJORITE', 'Majorité', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('11', 'MANIFANI', 'Manifestation - Animation', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('20', 'MARIAGE', 'Mariage', '0', '10053375', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('26', 'MICE', 'MICE', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('17', 'MONTDEM', 'Montage démontage', '1', '4227327', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('8', 'MUNICIPA', 'Municipalité', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('40', 'PERMANEN', 'Permanence', '0', '16763904', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('27', 'POLITIQU', 'Politique', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('30', 'QUEST', 'Questionnaire', '0', '4227327', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('2', 'RECE/COC', 'Réception', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('10', 'REPAS', 'Repas', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('29', 'REPDANS', 'Repas Dansant', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('32', 'RESIDENC', 'Résidence', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('3', 'REUNINT', 'Réunion interne', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('31', 'REUNION', 'Réunion', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('16', 'REUNPRIV', 'Réunion privée', '0', '1806852', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('23', 'SALON', 'Salon', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('9', 'SOIREDAN', 'Soirée dansante', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('12', 'SPECTACL', 'Spectacle', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('28', 'THDAN', 'Thé Dansant', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('44', 'VESTIAIR', 'Vestiaire', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('4', 'VINHONN', 'Vin d''honneur mariage', '0', '3514624', '0');
+INSERT INTO `typeven`(`id`, `codtype`, `libelle`, `nateven`, `coulfon`, `coullib`) VALUES ('38', 'VISITE', 'Visite', '0', '4227327', '0');
+
+INSERT INTO `v_annu_t_agent`(`idagent`, `nom`, `prenom`, `email`, `cptutil`) VALUES (2, 'Wolff' , 'Nathalie', 'nathalie.wolff@troyes-cm.fr', 'nathalie.wolff');
+INSERT INTO `v_annu_t_agent`(`idagent`, `nom`, `prenom`, `email`, `cptutil`) VALUES (1, 'Vauvilliers' , 'Théo', 'theo.vauvilliers@troyes-cm.fr', 'theo.vauvilliers');
+
+INSERT INTO `agent_role`(`id_agent`, `id_role`) VALUES (1, 1);
+INSERT INTO `agent_role`(`id_agent`, `id_role`) VALUES (2, 2);

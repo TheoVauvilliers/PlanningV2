@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+
+        <title>App {% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/base.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+
+            <!-- Barre en haut de la page -->
+            <div class="topBarre">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="{{ path('logout') }}">Deconnexion</a>
+                {% endif %}
+            </div>
+
+            <!-- Barre de navigation -->
+            <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item {% if app.request.attributes.get('_route') == 'login' %}active{% endif %}">
+                            <a class="nav-link" href="{{ path('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item {% if app.request.attributes.get('_route') == 'planning' %}active{% endif %}">
+                            <a class="nav-link" href="{{ path('planning') }}">Planning</a>
+                        </li>
+                        <li class="nav-item {% if app.request.attributes.get('_route') == 'reservation' %}active{% endif %}">
+                            <a class="nav-link" href="{{ path('reservation') }}">Demande de réservation</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Contenu de la page -->
+            <div class="intoBlockBody">
+                {% block body %}{% endblock %}
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="{{ asset('bootstrap/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bootstrap/bootstrap.bundle.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

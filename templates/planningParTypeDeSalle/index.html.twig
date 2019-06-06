@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Planning par type de salle{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/planningPar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/calendar.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="title">
+        <h1 class="text-center">Planning par type de salle</h1>
+    </div>
+
+    <form action="" method="post">
+        <div class="row">
+            <label for="typeSelection"></label>
+            <select class="form-control offset-md-1 col-md-7" name="typeSelection" id="typeSelection">
+                <option value="">-- Choisissez un type de salle --</option>
+                {% for type in types %}
+                    <option value="{{ type.id }}" {% if type.id == currentType %}selected="selected"{% endif %}>{{ type.libelle }}</option>
+                {% endfor %}
+            </select>
+
+            <input class="btn btn-light offset-1 col-2" type="submit" value="Rechercher">
+        </div>
+    </form>
+
+    {% if planning %}
+
+        <hr>
+
+        <div class="offset-4 col-4">
+            <div id="calendar" class="calendar"></div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <button class="btn btn-light offset-1 col-2" id="buttonPrev">Précédent</button>
+            <button class="btn btn-light offset-6 col-2" id="buttonNext">Suivant</button>
+        </div>
+
+        <hr>
+
+        <div>
+            <table class="tabInfo">
+                <thead>
+                <tr>
+                    <th class="void"></th>
+                    <th colspan="26" id="week"></th>
+                </tr>
+                <tr>
+                    <th class="void"></th>
+                    <th colspan="26" id="day"></th>
+                </tr>
+                <tr>
+                    <th class="void"></th>
+                    <th colspan="2" class="infoHour">8H</th>
+                    <th colspan="2" class="infoHour">9H</th>
+                    <th colspan="2" class="infoHour">10H</th>
+                    <th colspan="2" class="infoHour">11H</th>
+                    <th colspan="2" class="infoHour">12H</th>
+                    <th colspan="2" class="infoHour">13H</th>
+                    <th colspan="2" class="infoHour">14H</th>
+                    <th colspan="2" class="infoHour">15H</th>
+                    <th colspan="2" class="infoHour">16H</th>
+                    <th colspan="2" class="infoHour">17H</th>
+                    <th colspan="2" class="infoHour">18H</th>
+                    <th colspan="2" class="infoHour">19H</th>
+                    <th colspan="2" class="infoHour">20H</th>
+                </tr>
+                </thead>
+            </table>
+
+            <table class="tabReservation">
+                <tbody id="tabBody">
+                </tbody>
+            </table>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/moment-with-locales.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/planning.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/calendar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('ajax/planningPar.js') }}"></script>
+
+    <script type="text/javascript" >
+
+        $("#buttonNext, #buttonPrev").click(function () {
+
+            let dateForPHP = moment(datePlanning).toDate();
+
+            $.ajax({
+                url: "{{ path('PlanningParTypeDeSalleAjax') }}",
+                type: "post",
+                dataType: "json",
+                data: {"planningDate": dateForPHP, "typeDeSalle": $("#typeSelection").val()},
+                async: true,
+                success: function (data) {
+                    updatePlanning(data);
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            // Appelle la fonction load au premier chargement de la page (planning.js)
+            $(load());
+
+            let role = {{ role|raw }};
+
+            // Si la personne possède les droits
+            if (role === "ROLE_GESTIONNAIRE") {
+                // Ajoute evenement au click de la réservation
+                $("body").on('click', 'td.cliquable', function(e) {
+                    let td = $(e.currentTarget);
+                    let id = td.attr("data-id");
+
+                    let url = "{{ path('modification') }}/"+id;
+
+                    window.location.href = url;
+                });
+            }
+
+            let data = {{ reservation|raw }};
+            updatePlanning(data);
+
+        });
+    </script>
+{% endblock %}

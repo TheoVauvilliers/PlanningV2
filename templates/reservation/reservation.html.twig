@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Réservation{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('tempusDominus/tempusDominus.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/reservation.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center">Demande de réservation d'une salle</h1>
+
+    <hr>
+
+    {% if canRes == 0 %}
+        <div class="alert alert-danger">
+            La plage horaire demandée n'est pas disponible. <br>
+            Veuillez en choisir une autre ou visualiser le planning pour prendre connaissance des horaires disponibles.
+        </div>
+
+        <hr>
+    {% endif %}
+
+    {% if date == 0 %}
+        <div class="alert alert-danger">
+            Attention ! <br>
+            Les réservation s'effectue sur un créneaux minimum de 30 minutes et les minutes doivent donc être soit '00' soit '30'.
+        </div>
+
+        <hr>
+    {% endif %}
+
+    {% if sameDate == 1 %}
+        <div class="alert alert-danger">
+            La date et l'horaire de début de réservation ne peuvent être la même que celle de fin !
+        </div>
+
+        <hr>
+    {% endif %}
+
+    {{ form_start(form) }}
+
+    <span>Identification</span>
+    <div class="identification">
+        {#libres#}
+        <div class="col-11">
+            <div class="form-group">
+                <label for="reservation_libres">Descriptif :</label>
+                {{ form_widget(form.libres, {'attr': {'class': "form-control"}}) }}
+            </div>
+        </div>
+
+        {#typeven#}
+        <div class="col-10">
+            <div class="form-group">
+                <label for="reservation_typeven">Type :</label>
+                {{ form_widget(form.typeven, {'attr': {'class': "form-control"}}) }}
+            </div>
+        </div>
+
+        {#client#}
+        <div class="col-10">
+            <div class="form-group">
+                <label for="reservation_client">Client :</label>
+                {{ form_widget(form.client, {'attr': {'class': "form-control"}}) }}
+            </div>
+        </div>
+
+        {#beneficiaire#}
+        <div class="col-10">
+            <div class="form-group">
+                <label for="reservation_beneficiaire">Bénéficiaire :</label>
+                {{ form_widget(form.beneficiaire, {'attr': {'class': "form-control"}}) }}
+            </div>
+        </div>
+
+        {#salle#}
+        <div class="col-10">
+            <div class="form-group">
+                <label for="reservation_salle">Salle :</label>
+                {{ form_widget(form.salle, {'attr': {'class': "form-control"}}) }}
+            </div>
+        </div>
+    </div>
+
+    <span>Période</span>
+    <div class="periode">
+        <div class="row">
+            {#datetimeDebut#}
+            <div class="offset-md-1 col-md-4">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepickerDebut" data-target-input="nearest">
+                        {{ form_widget(form.planning.datetimeDebut, {'attr': {'class': "form-control datetimepicker-input", 'data-target': "#datetimepickerFin"}}) }}
+                        <div class="input-group-append" data-target="#datetimepickerDebut" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#datetimeFin#}
+            <div class="offset-md-2 col-md-4">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepickerFin" data-target-input="nearest">
+                        {{ form_widget(form.planning.datetimeFin, {'attr': {'class': "form-control datetimepicker-input", 'data-target': "#datetimepickerFin"}}) }}
+                        <div class="input-group-append" data-target="#datetimepickerFin" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {#comment#}
+    <div class="form-group">
+        <label for="reservation_comment">Commentaire :</label>
+        {{ form_widget(form.comment, {'attr': {'class': "form-control"}}) }}
+    </div>
+
+    {#submit#}
+    <div class="row">
+        <div class="col-md-3 col-12">
+            <button class="btn btn-light" id="submit" type="submit">Effectuer la demande</button>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/moment-with-locales.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('tempusDominus/tempusDominus.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepickerDebut, #datetimepickerFin').datetimepicker({
+                locale: 'fr',
+                format: 'YYYY-MM-DD HH:mm',
+                defaultDate: new Date(),
+                icons: {
+                    time: 'far fa-clock',
+                    date: 'far fa-calendar',
+                    up: 'fas fa-arrow-up',
+                    down: 'fas fa-arrow-down',
+                    previous: 'fas fa-chevron-left',
+                    next: 'fas fa-chevron-right',
+                    today: 'far fa-calendar-check-o',
+                    clear: 'far fa-trash',
+                    close: 'far fa-times'
+                },
+            });
+        });
+
+        $(function () {
+            $('#datetimepickerDebut').datetimepicker();
+            $('#datetimepickerFin').datetimepicker({
+                useCurrent: false
+            });
+            $("#datetimepickerDebut").on("change.datetimepicker", function (e) {
+                $('#datetimepickerFin').datetimepicker('minDate', e.date);
+            });
+            $("#datetimepickerFin").on("change.datetimepicker", function (e) {
+                $('#datetimepickerDebut').datetimepicker('maxDate', e.date);
+            });
+        });
+    </script>
+{% endblock %}

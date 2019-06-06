@@ -1,0 +1,31 @@
+security:
+    # encoders:
+    #     App\Entity\User:
+            # algorithm: argon2i
+
+    providers:
+
+        app_user_provider:
+            entity:
+                class: App\Entity\VAnnuTAgent
+                property: cputil
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+            logout:
+                path:   logout
+
+    access_denied_url: /login
+
+    role_hierarchy:
+        ROLE_GESTIONNAIRE: ROLE_PLANNING
+
+    access_control:
+         - { path: ^/planning/modification, roles: ROLE_GESTIONNAIRE }
+         - { path: ^/planning, roles: ROLE_PLANNING }

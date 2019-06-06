@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}- Planning{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <div class="title">
+            <h1>Choix de l'affichage du planning</h1>
+        </div>
+
+        <hr style="background-color: white">
+
+        <div class="row">
+            <div class="col-6">
+                <a class="btn btn-light" href="{{ path('planningParLieu') }}">Planning par lieu</a>
+            </div>
+
+            <div class="col-6">
+                <a class="btn btn-light" href="{{ path('PlanningParTypeDeSalle') }}">Planning par type de salle</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

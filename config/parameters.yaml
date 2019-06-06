@@ -1,0 +1,3 @@
+parameters:
+  ldap_server:  'MAIRIE.VILLE-TROYES.FR'  
+  ldap_tree:  'DC=MAIRIE,DC=VILLE-TROYES,DC=FR'

@@ -1,0 +1,21 @@
+span {
+    font-style: italic;
+}
+
+.identification, .periode {
+    margin-bottom: 20px;
+
+    border: 1px solid white;
+}
+
+.identification {
+    padding: 10px;
+}
+
+.periode {
+    padding: 30px 10px 10px 10px;
+}
+
+label {
+    padding-right: 10px;
+}

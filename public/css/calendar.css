@@ -1,0 +1,80 @@
+/*@import url('https://fonts.googleapis.com/css?family=Poppins');*/
+
+.calendar
+{
+    background: #fff;
+    border-radius: 5px;
+    color: #343a40;
+    overflow: hidden;
+    margin-top: 20px;
+    max-width: 300px;
+}
+
+button
+{
+    border: none;
+}
+
+.calendar .header
+{
+    background: #ddd;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.calendar .month
+{
+    display: inline-block;
+    font-weight: bold;
+}
+
+.calendar button
+{
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: Consolas;
+    font-size: 23px;
+    font-weight: bold;
+    height: 100%;
+    padding: 0 15px;
+}
+
+.calendar button:hover
+{
+    color: #ff8a00;
+}
+
+.calendar button:first-child
+{
+    float: left;
+}
+
+.calendar button:last-child
+{
+    float: right;
+}
+
+.calendar .cell
+{
+    background: #fff;
+    color: #343a40;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 3px 0;
+    text-align: center;
+    width: calc(100% / 7);
+}
+
+.calendar .day
+{
+    font-size: .8rem;
+    padding: 4px 0;
+}
+
+.calendar .day, .calendar .today
+{
+    background: #ff8a00;
+    color: #fff;
+}

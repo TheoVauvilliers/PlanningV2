@@ -1,0 +1,55 @@
+body {
+    background-color: #ffffff;
+    color: white;
+}
+
+.topBarre {
+    height: 30px;
+    background-color: #343a40;
+    border-radius: 0 0 20px 20px;
+
+    text-align: right;
+    padding-right: 30px;
+}
+
+.topBarre a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.topBarre a:hover {
+    text-decoration: underline #fff;
+}
+
+a {
+    color: #343a40;
+}
+
+#navbarSupportedContent {
+    margin-bottom: -10px;
+    margin-left: 40px;
+}
+
+.active {
+    background-color: #343a40;
+    border-radius: 10px 10px 0 0
+}
+
+.active a {
+    color: white;
+}
+
+.intoBlockBody {
+    padding: 23px;
+
+    background-color: #343a40;
+    border-radius: 20px;
+}
+
+.title {
+    padding: 20px 0 20px 0;
+}
+
+hr {
+    background-color: white;
+}
